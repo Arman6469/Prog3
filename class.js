@@ -1,34 +1,3 @@
-// class Cat{
-//     constructor(x,y, name,axorjak) {
-//        this.x = x;
-//        this.y = y;
-//        this.name = name;
-//        this.axorjak = axorjak;
-//        this.energy = 8;
-//        this.hungry = true;
-//        this.mouseCount = 0;
-//     }
-//     move(x,y){
-//         if(this.y <10 && this.x<10){
-//         this.x+=x;
-//         this.y+=y;
-//         }
-//     }
-
-//     eat(){
-//         this.mouseCount++;
-//         if (this.mousecount>= this.axorjak){
-//             this.hungry = false
-//         }
-//     }
-
-
-
-// }
-
-
-
-
 class Grass {
     constructor(x, y) {
         this.x = x;
@@ -581,7 +550,7 @@ class Hoxm {
             }
 
         }
-        // matrix[this.y][this.x] = 5;
+        matrix[this.y][this.x] = 5;
 
 
     }
