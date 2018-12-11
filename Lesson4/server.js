@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
         io.sockets.emit("display message", data);
     });
     socket.on("delete message", function (data){
-        // messages = []
+        messages = []
         io.sockets.emit("display message1", data)
     });
  });

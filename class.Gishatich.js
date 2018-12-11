@@ -1,11 +1,9 @@
-class Gishatich extends LivingCreature {
+var LivingCreature = require("./LivingCreature")
+
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.energy = 5;
-
-
-
-
     }
 
     yntrelVandak1(ch, ch1) {

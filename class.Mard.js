@@ -1,4 +1,6 @@
-class Mard extends LivingCreature {
+var LivingCreature = require("./LivingCreature")
+
+module.exports = class Mard extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.energy = 8;

@@ -10,18 +10,12 @@ function main() {
         if (evt.key == "Enter" && val != "") {
             socket.emit("send message", val);
         }
+        else if (evt.key == "Backspace") {
+            socket.emit("delete message");
+        }
     }
 
     window.onkeydown = keydown;
-
-    function Delete() {
-        socket.emit("delete message");
-    }
-
-
-    delet.onclick = Delete;
-
-
 
     function handleMessage(msg) {
         var p = document.createElement('p');
@@ -33,7 +27,10 @@ function main() {
     function deleteMessage() {
         var allPs = document.getElementsByTagName('p');
         for (var i in allPs) {
-            allPs[i].parentElement.removeChild(allPs[i]);
+            if (allPs.length > 0){
+                chatDiv.removeChild(chatDiv.lastChild);
+                console.log(chatDiv.lastChild);
+            }
         }
     }
 
@@ -46,7 +43,19 @@ function main() {
 window.onload = main;
 
 
-
+function draw() {
+    var value = 0
+    fill(value);
+    rect(25, 25, 50, 50);
+}
+function mouseDragged() {
+    ellipse(mouseX, mouseY, 5, 5);
+    return false;
+}
+function setup() {
+    createCanvas(500, 500)
+    background('#acacac')
+}
 
 
 
