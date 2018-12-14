@@ -1,4 +1,4 @@
-var LivingCreature = require("./LivingCreature")
+var LivingCreature = require("./class.LivingCreature")
 
 module.exports = class Mard extends LivingCreature {
     constructor(x, y) {
@@ -47,7 +47,7 @@ module.exports = class Mard extends LivingCreature {
     utel() {
         this.stanalNorKordinatner();
         var norVandak = this.yntrelVandak(3, 2, 1);
-        var yntrelVandak = random(norVandak)
+        var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy++;
             matrix[this.y][this.x] = 0;
@@ -92,7 +92,7 @@ module.exports = class Mard extends LivingCreature {
     Move() {
         this.stanalNorKordinatner();
         var norVandak = this.yntrelVandak(0);
-        var yntrelVandak = random(norVandak)
+        var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy--;
             matrix[this.y][this.x] = 0;
@@ -109,7 +109,7 @@ module.exports = class Mard extends LivingCreature {
 
     Bazmanal() {
         this.stanalNorKordinatner();
-        var norVandak = random(this.yntrelVandak(0));
+        var norVandak = Random(this.yntrelVandak(0));
         if (norVandak) {
             if (this.energy >= 30) {
                 var norMard = new Mard(norVandak[0], norVandak[1]);

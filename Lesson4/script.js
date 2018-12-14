@@ -43,22 +43,6 @@ function main() {
 window.onload = main;
 
 
-function draw() {
-    var value = 0
-    fill(value);
-    rect(25, 25, 50, 50);
-}
-function mouseDragged() {
-    ellipse(mouseX, mouseY, 5, 5);
-    return false;
-}
-function setup() {
-    createCanvas(500, 500)
-    background('#acacac')
-}
-
-
-
 
 
 

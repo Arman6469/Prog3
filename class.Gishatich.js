@@ -1,4 +1,4 @@
-var LivingCreature = require("./LivingCreature")
+var LivingCreature = require("./class.LivingCreature")
 
 module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
@@ -49,7 +49,7 @@ module.exports = class Gishatich extends LivingCreature {
     utel() {
         this.stanalNorKordinatner();
         var norVandak = this.yntrelVandak(2);
-        var yntrelVandak = random(norVandak)
+        var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy++;
             matrix[this.y][this.x] = 0;
@@ -79,7 +79,7 @@ module.exports = class Gishatich extends LivingCreature {
     Move() {
         this.stanalNorKordinatner();
         var norVandak = this.yntrelVandak1(1, 0);
-        var yntrelVandak = random(norVandak)
+        var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy--;
             matrix[this.y][this.x] = 0;
@@ -96,7 +96,7 @@ module.exports = class Gishatich extends LivingCreature {
 
     Bazmanal() {
         this.stanalNorKordinatner();
-        var norVandak = random(this.yntrelVandak(0));
+        var norVandak = Random(this.yntrelVandak(0));
         if (norVandak) {
             if (this.energy >= 10) {
                 var norGishatich = new Gishatich(norVandak[0], norVandak[1]);
