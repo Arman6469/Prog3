@@ -1,21 +1,27 @@
 var socket = io();
 var side = 16;
-
+var weather = "Amar";
 
 function setup() {
     noStroke();
     createCanvas(40 * side, 40 * side);
     background('#acacac');
 }
+socket.on("weather", function(data){
+    weather = data;
+});
 
-
-socket.on("Ekan brni", function draw() {
+socket.on("Ekan brni", function (matrix) {
     background("acacac")
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
-            if (matrix[y][x] == 1) {
+            if (matrix[y][x] == 1 && weather != "Dzmer") {
                 fill("green");
+                rect(x * side, y * side, side, side);
+            }
+            else if (matrix[y][x] == 1 && weather == "Dzmer") {
+                fill(141, 255, 32);
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 0) {
@@ -40,9 +46,16 @@ socket.on("Ekan brni", function draw() {
             }
         }
     }
-
+    fill("black");
+    text("Now is " + weather, 0, matrix[0].length * side + 10);
+   
+    
 
 });
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-var LivingCreature = require("./class.LivingCreature")
+var LivingCreature = require("./class.LivingCreature.js")
 
 module.exports = class Mard extends LivingCreature {
     constructor(x, y) {
@@ -45,6 +45,7 @@ module.exports = class Mard extends LivingCreature {
     }
 
     utel() {
+        if (weather != "Ashun")
         this.stanalNorKordinatner();
         var norVandak = this.yntrelVandak(3, 2, 1);
         var yntrelVandak = Random(norVandak)

@@ -1,4 +1,4 @@
-var LivingCreature = require("./class.LivingCreature")
+var LivingCreature = require("./class.LivingCreature.js")
 
 module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
@@ -77,37 +77,37 @@ module.exports = class Gishatich extends LivingCreature {
 
 
     Move() {
-        this.stanalNorKordinatner();
-        var norVandak = this.yntrelVandak1(1, 0);
-        var yntrelVandak = Random(norVandak)
-        if (yntrelVandak) {
-            this.energy--;
-            matrix[this.y][this.x] = 0;
-            this.y = yntrelVandak[1];
-            this.x = yntrelVandak[0];
-            matrix[this.y][this.x] = 3;
+        if (weather != "Dzmer") {
+            this.stanalNorKordinatner();
+            var norVandak = this.yntrelVandak1(1, 0);
+            var yntrelVandak = Random(norVandak)
+            if (yntrelVandak) {
+                this.energy--;
+                matrix[this.y][this.x] = 0;
+                this.y = yntrelVandak[1];
+                this.x = yntrelVandak[0];
+                matrix[this.y][this.x] = 3;
 
 
-
+            }
         }
-
-
     }
 
     Bazmanal() {
-        this.stanalNorKordinatner();
-        var norVandak = Random(this.yntrelVandak(0));
-        if (norVandak) {
-            if (this.energy >= 10) {
-                var norGishatich = new Gishatich(norVandak[0], norVandak[1]);
-                gishatichArr.push(norGishatich);
-                matrix[norVandak[1]][norVandak[0]] = 3;
-                this.energy = 6;
+        if (weather != "Dzmer") {
+            this.stanalNorKordinatner();
+            var norVandak = Random(this.yntrelVandak(0));
+            if (norVandak) {
+                if (this.energy >= 10) {
+                    var norGishatich = new Gishatich(norVandak[0], norVandak[1]);
+                    gishatichArr.push(norGishatich);
+                    matrix[norVandak[1]][norVandak[0]] = 3;
+                    this.energy = 6;
+                }
             }
+
         }
-
     }
-
 
 
     Mahanal() {

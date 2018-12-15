@@ -1,4 +1,4 @@
-var LivingCreature = require("./class.LivingCreature")
+var LivingCreature = require("./class.LivingCreature.js")
 
 module.exports = class Xotaker extends LivingCreature {
     constructor(x, y) {
@@ -85,7 +85,17 @@ module.exports = class Xotaker extends LivingCreature {
 
 
     Mahanal() {
-        if (this.energy == 0) {
+        if (weather == "Dzmer" && this.energy == 2) {
+            matrix[this.y][this.x] = 0;
+            for (var i in xotakerArr) {
+                if (this.y == xotakerArr[i].y && this.x == xotakerArr[i].x) {
+                    xotakerArr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+
+        else if (weather != "Dzmer" && this.energy == 0) {
             matrix[this.y][this.x] = 0;
             for (var i in xotakerArr) {
                 if (this.y == xotakerArr[i].y && this.x == xotakerArr[i].x) {
