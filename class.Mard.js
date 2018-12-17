@@ -1,13 +1,19 @@
 var LivingCreature = require("./class.LivingCreature.js")
 
 module.exports = class Mard extends LivingCreature {
-    constructor(x, y) {
+    constructor(x, y, ser) {
         super(x, y)
         this.energy = 8;
+        if (ser == 4) {
+            this.ser = "arakan"
+        }
+        else {
+            this.ser = "igakan"
+        }
     }
 
 
-    yntrelVandak(ch, ch1, ch2) {
+    yntrelVandak1(ch, ch1, ch2, ch3, ch4) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -23,6 +29,13 @@ module.exports = class Mard extends LivingCreature {
                 if (matrix[y][x] == ch2) {
                     found.push(this.directions[i]);
                 }
+                if (matrix[y][x] == ch3) {
+                    found.push(this.directions[i]);
+                }
+                if (matrix[y][x] == ch4) {
+                    found.push(this.directions[i]);
+                }
+
 
             }
 
@@ -46,15 +59,15 @@ module.exports = class Mard extends LivingCreature {
 
     utel() {
         if (weather != "Ashun")
-        this.stanalNorKordinatner();
-        var norVandak = this.yntrelVandak(3, 2, 1);
+            this.stanalNorKordinatner();
+        var norVandak = this.yntrelVandak(3, 3.5, 2, 2.5, 1);
         var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy++;
             matrix[this.y][this.x] = 0;
             this.y = yntrelVandak[1];
             this.x = yntrelVandak[0];
-            matrix[this.y][this.x] = 4
+            matrix[this.y][this.x] = this.ser == "arakan" ? 4 : 4.5;
 
             for (var i in gishatichArr) {
                 if (this.y == gishatichArr[i].y && this.x == gishatichArr[i].x) {
@@ -99,29 +112,28 @@ module.exports = class Mard extends LivingCreature {
             matrix[this.y][this.x] = 0;
             this.y = yntrelVandak[1];
             this.x = yntrelVandak[0];
-            matrix[this.y][this.x] = 4;
-
-
-
+            matrix[this.y][this.x] = this.ser == "arakan" ? 4 : 4.5;
+            console.log(this.ser)
         }
-
-
     }
 
     Bazmanal() {
-        this.stanalNorKordinatner();
-        var norVandak = Random(this.yntrelVandak(0));
-        if (norVandak) {
-            if (this.energy >= 30) {
-                var norMard = new Mard(norVandak[0], norVandak[1]);
-                mardArr.push(norMard);
-                matrix[norVandak[1]][norVandak[0]] = 4;
-                this.energy = 6;
+        if (this.ser == "arakan") {
+            var vandak = Random(this.yntrelVandak(4.5))
+            if (vandak) {
+                var norVandak = Random(this.yntrelVandak(0));
+                if (norVandak) {
+                    if (this.energy >= 30) {
+                        var ser = 4 + (Math.round(Math.random())) / 2;
+                        var norMard = new Mard(norVandak[0], norVandak[1], ser);
+                        mardArr.push(norMard);
+                        matrix[norVandak[1]][norVandak[0]] = 4 + (Math.round(Math.random())) / 2;
+                        this.energy = 6;
+                    }
+                }
             }
         }
-
     }
-
 
 
     Mahanal() {

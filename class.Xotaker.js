@@ -1,9 +1,15 @@
 var LivingCreature = require("./class.LivingCreature.js")
 
 module.exports = class Xotaker extends LivingCreature {
-    constructor(x, y) {
+    constructor(x, y, ser) {
         super(x, y);
         this.energy = 8;
+        if (ser == 2) {
+            this.ser = "arakan"
+        }
+        else {
+            this.ser = "igakan"
+        }
     }
 
 
@@ -29,8 +35,7 @@ module.exports = class Xotaker extends LivingCreature {
             matrix[this.y][this.x] = 0;
             this.y = yntrelVandak[1];
             this.x = yntrelVandak[0];
-            matrix[this.y][this.x] = 2
-
+            matrix[this.y][this.x] = this.ser == "arakan" ? 2 : 2.5;
             for (var i in grassArr) {
                 if (this.y == grassArr[i].y && this.x == grassArr[i].x) {
                     grassArr.splice(i, 1);
@@ -38,12 +43,9 @@ module.exports = class Xotaker extends LivingCreature {
                 }
 
             }
-
-
         }
         else {
             this.Move();
-
         }
 
     }
@@ -59,27 +61,27 @@ module.exports = class Xotaker extends LivingCreature {
             matrix[this.y][this.x] = 0;
             this.y = yntrelVandak[1];
             this.x = yntrelVandak[0];
-            matrix[this.y][this.x] = 2;
-
-
-
+            matrix[this.y][this.x] = this.ser == "arakan" ? 2 : 2.5;
         }
-
-
     }
 
     Bazmanal() {
         this.stanalNorKordinatner();
-        var norVandak = Random(this.yntrelVandak(0));
-        if (norVandak) {
-            if (this.energy >= 10) {
-                var norXotaker = new Xotaker(norVandak[0], norVandak[1]);
-                xotakerArr.push(norXotaker);
-                matrix[norVandak[1]][norVandak[0]] = 2;
-                this.energy = 6;
+        if (this.ser == "arakan") {
+            var vandak = Random(this.yntrelVandak(2.5));
+            if (vandak) {
+                var norVandak = Random(this.yntrelVandak(0));
+                if (norVandak) {
+                    if (this.energy >= 10) {
+                        var ser = 2 + (Math.round(Math.random())) / 2
+                        var norXotaker = new Xotaker(norVandak[0], norVandak[1], ser);
+                        xotakerArr.push(norXotaker);
+                        matrix[norVandak[1]][norVandak[0]] = 2 + (Math.round(Math.random())) / 2
+                        this.energy = 6;
+                    }
+                }
             }
         }
-
     }
 
 

@@ -21,7 +21,7 @@ socket.on("Ekan brni", function (matrix) {
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 1 && weather == "Dzmer") {
-                fill(141, 255, 32);
+                fill(6, 249, 75);
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 0) {
@@ -32,12 +32,24 @@ socket.on("Ekan brni", function (matrix) {
                 fill("yellow");
                 rect(x * side, y * side, side, side);
             }
+            else if (matrix[y][x] == 2.5) {
+                fill("blue");
+                rect(x * side, y * side, side, side);
+            }
             else if (matrix[y][x] == 3) {
                 fill(209, 6, 6);
                 rect(x * side, y * side, side, side);
             }
+            else if (matrix[y][x] == 3.5) {
+                fill(254, 119, 0);
+                rect(x * side, y * side, side, side);
+            }
             else if (matrix[y][x] == 4) {
                 fill(231, 151, 91);
+                rect(x * side, y * side, side, side);
+            }
+            else if (matrix[y][x] == 4.5) {
+                fill(245, 173, 188);
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 5) {
@@ -48,8 +60,6 @@ socket.on("Ekan brni", function (matrix) {
     }
     fill("black");
     text("Now is " + weather, 0, matrix[0].length * side + 10);
-   
-    
 
 });
 

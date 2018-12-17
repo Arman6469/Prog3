@@ -38,8 +38,7 @@ for (var i = 0; i < 40; i++) {
 for (var u = 0; u <= 15; u++) {
     matrix[Math.floor(Math.random() * 40)][Math.floor(Math.random() * 40)] = 2;
 }
-
-for (var o = 0; o <= 40; o++) {
+for (var o = 0; o <= 32; o++) {
     matrix[Math.floor(Math.random() * 40)][Math.floor(Math.random() * 40)] = 3;
 }
 for (var r = 0; r <= 10; r++) {
@@ -57,13 +56,19 @@ for (var y = 0; y < matrix.length; y++) {
             grassArr.push(new Grass(x, y));
         }
         else if (matrix[y][x] == 2) {
-            xotakerArr.push(new Xotaker(x, y));
+            var ser = 2 + (Math.round(Math.random())) / 2
+            xotakerArr.push(new Xotaker(x, y, ser));
+            matrix[y][x] += ser;
         }
         else if (matrix[y][x] == 3) {
-            gishatichArr.push(new Gishatich(x, y));
+            var ser = 3 + (Math.round(Math.random())) / 2
+            gishatichArr.push(new Gishatich(x, y, ser));
+            matrix[y][x] += ser;
         }
         else if (matrix[y][x] == 4) {
-            mardArr.push(new Mard(x, y));
+            var ser = 4 + (Math.round(Math.random())) / 2
+            mardArr.push(new Mard(x, y, ser));
+            matrix[y][x] += ser
         }
         else if (matrix[y][x] == 5) {
             hoxmArr.push(new Hoxm(x, y));
@@ -74,17 +79,17 @@ for (var y = 0; y < matrix.length; y++) {
 
 weather = "Amar"
 
-function exanak(){
-    if (weather == "Garun"){
+function exanak() {
+    if (weather == "Garun") {
         weather = "Amar"
     }
-    else if (weather == "Amar"){
+    else if (weather == "Amar") {
         weather = "Ashun"
     }
-    else if (weather == "Ashun"){
+    else if (weather == "Ashun") {
         weather = "Dzmer"
     }
-    else if (weather == "Dzmer"){
+    else if (weather == "Dzmer") {
         weather = "Garun"
     }
     io.sockets.emit("weather", weather)
