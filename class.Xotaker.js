@@ -78,6 +78,7 @@ module.exports = class Xotaker extends LivingCreature {
                         xotakerArr.push(norXotaker);
                         matrix[norVandak[1]][norVandak[0]] = 2 + (Math.round(Math.random())) / 2
                         this.energy = 6;
+                        xotakerCnvec++
                     }
                 }
             }

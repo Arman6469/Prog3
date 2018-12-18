@@ -10,6 +10,7 @@ module.exports = class Grass extends LivingCreature {
             grassArr.push(norXot);
             matrix[norVandak[1]][norVandak[0]] = 1;
             this.multiply = 1;
+            xotyClec++
         }
     }
     

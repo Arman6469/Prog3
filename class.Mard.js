@@ -3,7 +3,7 @@ var LivingCreature = require("./class.LivingCreature.js")
 module.exports = class Mard extends LivingCreature {
     constructor(x, y, ser) {
         super(x, y)
-        this.energy = 8;
+        this.energy = 20;
         if (ser == 4) {
             this.ser = "arakan"
         }
@@ -60,7 +60,7 @@ module.exports = class Mard extends LivingCreature {
     utel() {
         if (weather != "Ashun")
             this.stanalNorKordinatner();
-        var norVandak = this.yntrelVandak(3, 3.5, 2, 2.5, 1);
+        var norVandak = this.yntrelVandak1(3, 3.5, 2, 2.5, 1);
         var yntrelVandak = Random(norVandak)
         if (yntrelVandak) {
             this.energy++;
@@ -92,6 +92,7 @@ module.exports = class Mard extends LivingCreature {
                 }
 
             }
+            mardyKerav++
 
         }
         else {
@@ -113,7 +114,7 @@ module.exports = class Mard extends LivingCreature {
             this.y = yntrelVandak[1];
             this.x = yntrelVandak[0];
             matrix[this.y][this.x] = this.ser == "arakan" ? 4 : 4.5;
-            console.log(this.ser)
+            mardyQaylec++
         }
     }
 
@@ -128,7 +129,7 @@ module.exports = class Mard extends LivingCreature {
                         var norMard = new Mard(norVandak[0], norVandak[1], ser);
                         mardArr.push(norMard);
                         matrix[norVandak[1]][norVandak[0]] = 4 + (Math.round(Math.random())) / 2;
-                        this.energy = 6;
+                        this.energy = 20;
                     }
                 }
             }

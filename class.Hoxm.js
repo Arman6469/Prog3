@@ -80,6 +80,6 @@ module.exports = class Hoxm {
         }
         matrix[this.y][this.x] = 5;
 
-
+        hoxmyVeracrec++
     }
 }

@@ -2,12 +2,15 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var fs = require('fs');
 
 app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 server.listen(3000);
+//fs.unlinkSync("Statistics.json")
+
 
 hoxmArr = []
 mardArr = []
@@ -15,7 +18,12 @@ gishatichArr = []
 xotakerArr = []
 grassArr = []
 
-
+xotyClec = 0
+xotakerCnvec = 0
+gishatichCnvec = 0
+mardyKerav = 0
+hoxmyVeracrec = 0
+mardyQaylec = 0
 
 var Grass = require("./class.Grass.js")
 var Xotaker = require("./class.Xotaker.js")
@@ -35,7 +43,7 @@ for (var i = 0; i < 40; i++) {
         matrix[i][h] = Math.floor(Math.random() * 2);
     }
 }
-for (var u = 0; u <= 15; u++) {
+for (var u = 0; u <= 40; u++) {
     matrix[Math.floor(Math.random() * 40)][Math.floor(Math.random() * 40)] = 2;
 }
 for (var o = 0; o <= 32; o++) {
@@ -126,8 +134,21 @@ function drawServerayin() {
     for (var g in hoxmArr) {
         hoxmArr[g].haytnvel();
     }
+    //var text = {"Cnvac xotakerneri qanaky":xotakerCnvec,"Cnvac gishatichneri qanaky": gishatichCnvec + "\nMardkanc kerac baneri qanaky" + "-" + mardyKerav + "\nHoxmi veracrac baneri qanaky" + "-" + hoxmyVeracrec + "\nMardaknc qayleri qanaky datark vandaknerov" + "-" + mardyQaylec + "\nClac xoteri qanaky" + "-" + xotyClec
+
+
 
 
 
     io.sockets.emit("Ekan brni", matrix)
+
 }
+var obj = { "info": [] };
+function main() {
+    var file = "Statistics.json"
+    obj.info.push({ "Cnvac xotakerneri qanaky": xotakerCnvec, "Cnvac gishatichneri qanaky": gishatichCnvec });
+    fs.writeFileSync(file, JSON.stringify(obj));
+
+
+}
+setInterval(main, 1000)

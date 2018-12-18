@@ -102,6 +102,7 @@ module.exports = class Gishatich extends LivingCreature {
                             gishatichArr.push(norGishatich);
                             matrix[norVandak[1]][norVandak[0]] = 3 + (Math.round(Math.random())) / 2
                             this.energy = 6;
+                            gishatichCnvec++
                         }
                     }
                 }

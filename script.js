@@ -12,7 +12,7 @@ socket.on("weather", function(data){
 });
 
 socket.on("Ekan brni", function (matrix) {
-    background("acacac")
+    background("#acacac")
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -59,7 +59,7 @@ socket.on("Ekan brni", function (matrix) {
         }
     }
     fill("black");
-    text("Now is " + weather, 0, matrix[0].length * side + 10);
+    text("Հիմա " + weather + " է", 0, 630);
 
 });
 
