@@ -109,7 +109,7 @@ setInterval(exanak, 5000)
 
 
 
-setInterval(drawServerayin, 200)
+setInterval(drawServerayin, 300)
 
 
 function drawServerayin() {
@@ -143,12 +143,176 @@ function drawServerayin() {
     io.sockets.emit("Ekan brni", matrix)
 
 }
+io.on('connection', function (socket) {
+    socket.on("Sxmvec", function (arr) {
+        var x = arr[0];
+        var y = arr[1];
+        
+
+        var directions = [
+            [x - 1, y - 1],
+            [x, y - 1],
+            [x + 1, y - 1],
+            [x - 1, y],
+            [x + 1, y],
+            [x - 1, y + 1],
+            [x, y + 1],
+            [x + 1, y + 1],
+        ];
+
+        if (matrix[y][x] == 1) {
+            for (var i in grassArr) {
+                if (y == grassArr[i].y && x == grassArr[i].x) {
+                    grassArr.splice(i, 1);
+                    break;
+                }
+
+            }
+        }
+        else if (matrix[y][x] == 2) {
+            for (var i in xotakerArr) {
+                if (y == xotakerArr[i].y && x == xotakerArr[i].x) {
+                    xotakerArr.splice(i, 1);
+                    break;
+                }
+
+            }
+        }
+        else if (matrix[y][x] == 2.5) {
+            for (var i in xotakerArr) {
+                if (y == xotakerArr[i].y && x == xotakerArr[i].x) {
+                    xotakerArr.splice(i, 1);
+                    break;
+                }
+
+            }
+        }
+        else if (matrix[y][x] == 3) {
+            for (var i in gishatichArr) {
+                if (y == gishatichArr[i].y && x == gishatichArr[i].x) {
+                    gishatichArr.splice(i, 1);
+                    break;
+                }
+
+            }
+
+        }
+        else if (matrix[y][x] == 3.5) {
+            for (var i in gishatichArr) {
+                if (y == gishatichArr[i].y && x == gishatichArr[i].x) {
+                    gishatichArr.splice(i, 1);
+                    break;
+                }
+
+            }
+
+        }
+        else if (matrix[y][x] == 4) {
+            for (var i in mardArr) {
+                if (y == mardArr[i].y && x == mardArr[i].x) {
+                    mardArr.splice(i, 1);
+                    break;
+                }
+
+            }
+
+        }
+        else if (matrix[y][x] == 4.5) {
+            for (var i in mardArr) {
+                if (y == mardArr[i].y && x == mardArr[i].x) {
+                    mardArr.splice(i, 1);
+                    break;
+                }
+
+            }
+
+        }
+        matrix[y][x] = 0
+
+        for (var i in directions) {
+            var harevanx = directions[i][0];
+            var harevany = directions[i][1];
+
+            if (matrix[harevany][harevanx] == 1) {
+                for (var i in grassArr) {
+                    if (harevany == grassArr[i].y && harevanx == grassArr[i].x) {
+                        grassArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+            }
+            else if (matrix[harevany][harevanx] == 2) {
+                for (var i in xotakerArr) {
+                    if (harevany == xotakerArr[i].y && harevanx == xotakerArr[i].x) {
+                        xotakerArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+            }
+            else if (matrix[harevany][harevanx] == 2.5) {
+                for (var i in xotakerArr) {
+                    if (harevany == xotakerArr[i].y && harevanx == xotakerArr[i].x) {
+                        xotakerArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+            }
+            else if (matrix[harevany][harevanx] == 3) {
+                for (var i in gishatichArr) {
+                    if (harevany == gishatichArr[i].y && harevanx == gishatichArr[i].x) {
+                        gishatichArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+
+            }
+            else if (matrix[harevany][harevanx] == 3.5) {
+                for (var i in gishatichArr) {
+                    if (harevany == gishatichArr[i].y && harevanx == gishatichArr[i].x) {
+                        gishatichArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+
+            }
+            else if (matrix[harevany][harevanx] == 4) {
+                for (var i in mardArr) {
+                    if (harevany == mardArr[i].y && harevanx == mardArr[i].x) {
+                        mardArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+
+            }
+            else if (matrix[harevany][harevanx] == 4.5) {
+                for (var i in mardArr) {
+                    if (harevany == mardArr[i].y && harevanx == mardArr[i].x) {
+                        mardArr.splice(i, 1);
+                        break;
+                    }
+
+                }
+
+            }
+            matrix[harevany][harevanx] = 0
+        }
+    })
+});
+
+
 var obj = { "info": [] };
 function main() {
     var file = "Statistics.json"
-    obj.info.push({ "Cnvac xotakerneri qanaky": xotakerCnvec, "Cnvac gishatichneri qanaky": gishatichCnvec });
+    obj.info.push({ "Cnvac xotakerneri qanaky": xotakerCnvec, "Cnvac gishatichneri qanaky": gishatichCnvec, "Mardkanc kerac baneri qanaky": mardyKerav, "Hoxmi veracrac baneri qanaky": hoxmyVeracrec, "Mardaknc qayleri qanaky datark vandaknerov": mardyQaylec, "Clac xoteri qanaky": xotyClec });
     fs.writeFileSync(file, JSON.stringify(obj));
 
 
 }
 setInterval(main, 1000)
+

@@ -7,7 +7,7 @@ function setup() {
     createCanvas(40 * side, 40 * side);
     background('#acacac');
 }
-socket.on("weather", function(data){
+socket.on("weather", function (data) {
     weather = data;
 });
 
@@ -59,11 +59,21 @@ socket.on("Ekan brni", function (matrix) {
         }
     }
     fill("black");
-    text("Հիմա " + weather + " է", 0, 630);
+    var fontsize = 20
+    textSize(fontsize);
+    text("Հիմա " + weather + " է", 0, 635);
 
 });
 
 
+function mousePressed() {
+    var x = Math.floor(mouseX / side);
+    var y = Math.floor(mouseY / side);
+    var arr = [x, y];
+
+    socket.emit("Sxmvec", arr)
+
+}
 
 
 
