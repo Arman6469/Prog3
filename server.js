@@ -310,9 +310,9 @@ var obj = { "info": [] };
 function main() {
     var file = "Statistics.json"
     obj.info.push({ "Cnvac xotakerneri qanaky": xotakerCnvec, "Cnvac gishatichneri qanaky": gishatichCnvec, "Mardkanc kerac baneri qanaky": mardyKerav, "Hoxmi veracrac baneri qanaky": hoxmyVeracrec, "Mardaknc qayleri qanaky datark vandaknerov": mardyQaylec, "Clac xoteri qanaky": xotyClec });
-    fs.writeFileSync(file, JSON.stringify(obj));
+    fs.writeFileSync(file, JSON.stringify(obj,null,3));
 
 
 }
-setInterval(main, 1000)
+setInterval(main, 3000)
 
